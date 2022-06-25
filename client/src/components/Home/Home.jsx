@@ -15,6 +15,11 @@ const Home = () => {
 		dispatch(getAllCountries());
 	}, []);
 
+	useEffect(
+		() => dispatch({ type: 'SET_TOTAL_PAGES', payload: countries.length }),
+		[countries]
+	);
+
 	return (
 		<>
 			<Navbar />
