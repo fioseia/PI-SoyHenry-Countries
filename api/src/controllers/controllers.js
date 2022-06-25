@@ -4,7 +4,6 @@ const { Country, Activity, Op } = require('../db');
 let filterCountries = async (query, body) => {
 	const { name } = body;
 	let filteredCountries;
-	if (Object.keys(query).length || body) {
 		let iLikeQuery = formatingILikeQuery(query, Op.iLike);
 		filteredCountries = await Country.findAll({
 			where: {
@@ -18,11 +17,6 @@ let filterCountries = async (query, body) => {
 			attributes: ['name', 'image', 'continent'],
 			include: Activity,
 		});
-	} else {
-		filteredCountries = await Country.findAll({
-			attributes: ['name', 'image', 'continent'],
-		});
-	}
 	return filteredCountries;
 };
 
