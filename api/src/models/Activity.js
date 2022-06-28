@@ -53,4 +53,76 @@ module.exports = (sequelize) => {
 			},
 		},
 	});
+
+	sequelize.define(
+		'Category',
+		{
+			id: {
+				type: DataTypes.INTEGER,
+				primaryKey: true,
+			},
+			name: {
+				type: DataTypes.ENUM(
+					'sports',
+					'gastronomy',
+					'cultural',
+					'nature',
+					'nigth life',
+					'health',
+					'others'
+				),
+				allowNull: false,
+				get() {
+					return capitalizeFirstLetter(this.getDataValue('name'));
+				},
+			},
+		},
+		{ timestamps: false }
+	);
+
+	sequelize.define(
+		'Subcategory',
+		{
+			id: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				unique: true,
+				primaryKey: true,
+			},
+			name: {
+				type: DataTypes.ENUM(
+					'water sports',
+					'winter sports',
+					'cycling',
+					'climbing',
+					'running',
+					'popular sports',
+					'local gastronomy',
+					'wine tours',
+					'exotic gastronomy',
+					'gourmet gastronomy',
+					'museums',
+					'historical constructions',
+					'modern constructions',
+					'festivals',
+					'thematic parks',
+					'mountains',
+					'forest',
+					'local fauna',
+					'beach',
+					'national parks',
+					'green spots',
+					'ecology',
+					'pubs',
+					'night clubs',
+					'others'
+				),
+				defaultValue: 'others',
+				get() {
+					return capitalizeFirstLetter(this.getDataValue('name'));
+				},
+			},
+		},
+		{ timestamps: false }
+	);
 };

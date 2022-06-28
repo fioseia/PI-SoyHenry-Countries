@@ -6,14 +6,11 @@ import { Container } from './CardsContainerStyles';
 const CardsContainer = ({ countries }) => {
 	const pagination = useSelector((state) => state.paginationReducer);
 
-	let lastIndex =
-		pagination.current === 1
-			? pagination.current * pagination.cardsPerPage - 1
-			: pagination.current * pagination.cardsPerPage;
+	let lastIndex = pagination.current * pagination.cardsPerPage - 1;
 
 	let startIndex =
 		pagination.current > 1
-			? lastIndex - 1 - pagination.cardsPerPage
+			? lastIndex - pagination.cardsPerPage
 			: lastIndex + 1 - pagination.cardsPerPage;
 
 	return (

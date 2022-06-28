@@ -29,7 +29,12 @@ const paginationReducer = (state = initialState, action) => {
 		case 'SET_TOTAL_PAGES':
 			return {
 				...state,
-				totalPages: Math.ceil(action.payload / state.cardsPerPage),
+				totalPages: Math.ceil((action.payload - 9) / state.cardsPerPage) + 1,
+			};
+		case 'SET_CURRENT_PAGE':
+			return {
+				...state,
+				current: action.payload,
 			};
 		default:
 			return { ...state };

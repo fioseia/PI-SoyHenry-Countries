@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container, Page } from './PagedStyles';
 
@@ -20,19 +20,37 @@ const Paged = () => {
 			>
 				previous
 			</Button>
-			<Page active={pagination.current === 1}>{pagination.current - 1}</Page>
-			<Page>{pagination.current}</Page>
-			<Page active={pagination.current > pagination.totalPages}>
+			<Page
+				active={pagination.current === 1}
+				onClick={() =>
+					dispatch({
+						type: 'SET_CURRENT_PAGE',
+						payload: pagination.current - 1,
+					})
+				}
+			>
+				{pagination.current - 1}
+			</Page>
+			<Page main={true}>{pagination.current}</Page>
+			<Page
+				active={pagination.current >= pagination.totalPages}
+				onClick={() =>
+					dispatch({
+						type: 'SET_CURRENT_PAGE',
+						payload: pagination.current + 1,
+					})
+				}
+			>
 				{pagination.current + 1}
 			</Page>
 			<Button
-				active={pagination.current > pagination.totalPages}
+				active={pagination.current >= pagination.totalPages}
 				onClick={() => dispatch({ type: 'NEXT_PAGE' })}
 			>
 				next
 			</Button>
 			<Button
-				active={pagination.current > pagination.totalPages}
+				active={pagination.current >= pagination.totalPages}
 				onClick={() => dispatch({ type: 'LAST_PAGE' })}
 			>
 				last
