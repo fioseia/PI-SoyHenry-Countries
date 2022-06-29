@@ -1,43 +1,25 @@
 const { Router } = require('express');
-const { Country, Activity, Category, Subcategory, Op } = require('../db');
-const { getCountryDetails } = require('../controllers/controllers');
+const {
+	getCountryDetails,
+	filteredCountries,
+	getCountries,
+} = require('../controllers/controllers');
+
 const router = Router();
 
 router.get('/', async (req, res) => {
-	const { name, category, subcategory } = req.query;
+	const { name, continent, category, subcategory } = req.query;
+
 	try {
-		if (name || category || subcategory) {
-			response = await Country.findAll({
-				where: {
-					name: { [Op.iLike]: '%' + name + '%' },
-				},
-				include: [
-					{
-						model: Activity,
-						required: category || subcategory ? true : false,
-						attributes: [],
-						include: [
-							{
-								model: Subcategory,
-								where: subcategory ? { name: subcategory.toLowerCase() } : {},
-								attributes: [],
-								include: [
-									{
-										model: Category,
-										where: category ? { name: category.toLowerCase() } : {},
-										attributes: [],
-									},
-								],
-							},
-						],
-					},
-				],
-				attributes: ['name', 'image', 'continent', 'id'],
-			});
+		if (name || continent || category || subcategory) {
+			response = await filteredCountries(
+				name,
+				continent,
+				category,
+				subcategory
+			);
 		} else {
-			response = await Country.findAll({
-				attributes: ['name', 'image', 'continent', 'id'],
-			});
+			response = await getCountries();
 		}
 		res.status(200).json(response);
 	} catch (e) {

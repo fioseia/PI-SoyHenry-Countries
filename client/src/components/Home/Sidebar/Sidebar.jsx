@@ -3,23 +3,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	getCategories,
 	getFilteredCountries,
+	sortCountriesName,
+	sortCountriesPop,
 } from '../../../redux/actions/actions';
 import {
-  Categories,
+	Categories,
+	Checkbox,
 	Container,
 	Label,
 	Legend,
 	Radio,
 	Searchbar,
-  Subcategories,
+	Slider,
+	Subcategories,
+	Switch,
+	Wrapper,
 } from './SidebarStyles';
 
 const Sidebar = () => {
 	const [query, setQuery] = useState({
 		name: '',
+    continent: '',
 		category: '',
 		subcategory: '',
 	});
+	const [orderPop, setOrderPop] = useState('asc');
+	const [orderName, setOrderName] = useState('asc');
 	const [visibility, setVisibility] = useState('');
 	const categories = useSelector((state) => state.activitiesReducer.categories);
 	const dispatch = useDispatch();
@@ -33,11 +42,27 @@ const Sidebar = () => {
 		dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 });
 	}, [query]);
 
+	useEffect(() => {
+		dispatch(sortCountriesName(orderName));
+	}, [orderName]);
+
+	useEffect(() => {
+		dispatch(sortCountriesPop(orderPop));
+	}, [orderPop]);
+
 	const handleFilter = (e) => {
 		setQuery({
 			...query,
 			[e.target.name]: e.target.value === 'All' ? '' : e.target.value,
 		});
+	};
+
+	const handlerOrder = (e) => {
+		if (e.target.name === 'pop') {
+			setOrderPop(orderPop === 'asc' ? 'desc' : 'asc');
+		} else {
+			setOrderName(orderName === 'asc' ? 'desc' : 'asc');
+		}
 	};
 
 	return (
@@ -48,6 +73,16 @@ const Sidebar = () => {
 				name='name'
 				onChange={(e) => handleFilter(e)}
 			/>
+			<select name='continent'onChange={(e) => handleFilter(e)}>
+				<option value='All'>All</option>
+				<option value='Europe'>Europe</option>
+				<option value='Asia'>Asia</option>
+				<option value='Africa'>Africa</option>
+				<option value='Oceania'>Oceania</option>
+				<option value='North America'>North America</option>
+				<option value='South America'>South America</option>
+				<option value='Antarctica'>Antarctica</option>
+			</select>
 			<Categories visibility={visibility}>
 				<Legend>Category</Legend>
 				{categories &&
@@ -58,9 +93,9 @@ const Sidebar = () => {
 								name='category'
 								value={category}
 								onChange={(e) => {
-                  handleFilter(e)
-                  setVisibility(e.target.value);
-                }}
+									handleFilter(e);
+									setVisibility(e.target.value);
+								}}
 							/>
 							{category}
 						</Label>
@@ -80,8 +115,41 @@ const Sidebar = () => {
 							{name}
 						</Label>
 					))}
-				<button onClick={(e) =>setVisibility(false)}>Return</button>
+				<button
+					value={'All'}
+					name={'category'}
+					onClick={(e) => {
+						handleFilter(e);
+						setVisibility(false);
+					}}
+				>
+					Return
+				</button>
 			</Subcategories>
+			<Wrapper>
+				Name ↓
+				<Switch>
+					<Checkbox
+						type='checkbox'
+						name='name'
+						onChange={(e) => handlerOrder(e)}
+					/>
+					<Slider></Slider>
+				</Switch>
+				↑
+			</Wrapper>
+			<Wrapper>
+				Population
+				<Switch>
+					↓
+					<Checkbox
+						type='checkbox'
+						name='pop'
+						onChange={(e) => handlerOrder(e)}
+					/>
+					<Slider></Slider>↑
+				</Switch>
+			</Wrapper>
 		</Container>
 	);
 };
