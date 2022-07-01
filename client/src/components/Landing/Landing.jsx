@@ -16,7 +16,7 @@ const Landing = () => {
 			<Wrapper>
 				<Title>Welcome to Countries Activities</Title>
 				<Subtitle>By Fiorenza Seia</Subtitle>
-				<Button to='/home'>Home</Button>
+				<Button to='/countries'>Home</Button>
 			</Wrapper>
 			<ImageContainer>
 				<Image src={earthGif} alt='' />

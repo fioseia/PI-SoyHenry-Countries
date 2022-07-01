@@ -58,3 +58,12 @@ export const sortCountriesName = (order) => {
 		dispatch({ type: SET_ORDER_NAME, payload: order });
 	};
 };
+
+export const getCountryDetails = (id) => {
+  return function (dispatch) {
+    fetch(`${PATH}/countries/${id}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: GET_COUNTRY_DETAILS, payload: data }))
+      .catch((error) => console.log(error));
+  };
+}

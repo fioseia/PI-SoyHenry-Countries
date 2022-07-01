@@ -60,13 +60,18 @@ let getCountryDetails = async (id) => {
 	});
 
 	let obj = {
+		id: response.id,
 		name: response.name,
 		image: response.image,
 		continent: response.continent,
+		subregion: response.subregion,
+		capital: response.capital,
+		area: response.area,
 		population: response.population,
 		activities: response.Activities.length
 			? response.Activities.map((activity) => {
 					return {
+            id: activity.id,
 						name: activity.name,
 						difficulty: activity.difficulty,
 						duration: activity.duration,

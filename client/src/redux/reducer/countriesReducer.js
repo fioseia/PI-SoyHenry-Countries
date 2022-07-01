@@ -3,6 +3,7 @@ import {
 	GET_FILTERED_COUNTRIES,
 	SET_ORDER_POP,
 	SET_ORDER_NAME,
+  GET_COUNTRY_DETAILS
 } from '../actions/actions';
 
 let initialState = {
@@ -43,6 +44,11 @@ const countriesReducer = (state = initialState, action) => {
 				...state,
 				countries: [...state.countries],
 			};
+    case GET_COUNTRY_DETAILS:
+      return {
+        ...state,
+        country: action.payload
+      }
 		default:
 			return { ...state };
 	}

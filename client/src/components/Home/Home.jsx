@@ -22,7 +22,7 @@ const Home = () => {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar button='create'/>
 			<Container>
 				<Paged />
 				<Sidebar />
