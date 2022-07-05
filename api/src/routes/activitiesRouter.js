@@ -16,14 +16,14 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
 	try {
 		let response = await Category.findAll({
-      attributes: ['name'],
-      include: [
-        {
-          model: Subcategory,
-          attributes: ['name'],
-        },
-      ],
-    });
+			attributes: ['name'],
+			include: [
+				{
+					model: Subcategory,
+					attributes: ['name','id'],
+				},
+			],
+		});
 		res.status(200).json(response);
 	} catch (e) {
 		res.status(400).json({ error: e.message });

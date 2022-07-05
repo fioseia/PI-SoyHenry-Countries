@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				is: /^[a-zA-Z0-9 ]*$/gm,
+				is: /^[a-zA-Z0-9 ]{5,45}$/gm,
 			},
 			set(value) {
 				this.setDataValue('name', capitalizeFirstLetter(value));
