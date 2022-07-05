@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCountryDetails } from '../../redux/actions/actions';
 import Navbar from '../Navbar/Navbar';
 import {
@@ -35,7 +35,7 @@ const CountryDetail = () => {
 
 	return (
 		<Maincontainer>
-				<Navbar button='home' />
+			<Navbar button='home' />
 			<Container>
 				<Wrapper>
 					<Flag src={country.image} />
@@ -95,7 +95,10 @@ const CountryDetail = () => {
 								</ActivityCard>
 							))
 						) : (
-							<h2>Hola</h2>
+							<>
+								<h2>Do you want to add an activity?</h2>
+								<Link to='/activities'>Create activity</Link>
+							</>
 						)}
 					</ActivitiesContainer>
 				</Wrapper>
