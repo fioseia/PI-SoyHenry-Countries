@@ -7,7 +7,7 @@ let getCountries = async () => {
 		});
 		return response;
 	} catch (e) {
-		return { error: e.message };
+		throw new Error(e.message);
 	}
 };
 
@@ -71,7 +71,7 @@ let getCountryDetails = async (id) => {
 		activities: response.Activities.length
 			? response.Activities.map((activity) => {
 					return {
-            id: activity.id,
+						id: activity.id,
 						name: activity.name,
 						difficulty: activity.difficulty,
 						duration: activity.duration,
@@ -93,15 +93,19 @@ let createNewActivity = async ({
 	countriesId,
 	subcategoryId,
 }) => {
-	let newActivity = await Activity.create({
-		name,
-		difficulty,
-		duration,
-		season,
-	});
+	try {
+		let newActivity = await Activity.create({
+			name,
+			difficulty,
+			duration,
+			season,
+		});
 
-	if (countriesId) await newActivity.addCountries(countriesId);
-	if (subcategoryId) await newActivity.setSubcategory(subcategoryId);
+		if (countriesId) await newActivity.addCountries(countriesId);
+		if (subcategoryId) await newActivity.setSubcategory(subcategoryId);
+	} catch (e) {
+		throw new Error(e.message);
+	}
 };
 
 module.exports = {
