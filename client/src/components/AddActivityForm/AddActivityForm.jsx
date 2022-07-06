@@ -84,6 +84,7 @@ export class AddActivityForm extends Component {
 			errors.countriesId = 'At least one country must be selected';
 		}
     console.log(errors)
+    console.log(state)
 
 		this.setState((state) => ({ errors }));
 	};
