@@ -59,7 +59,7 @@ export class AddActivityForm extends Component {
 			subcategoryId,
 			countriesId,
 		} = state;
-
+    console.log(subcategoryId)
 		const errors = {};
 		if (!name) {
 			errors.name =
@@ -84,7 +84,7 @@ export class AddActivityForm extends Component {
 			errors.countriesId = 'At least one country must be selected';
 		}
     console.log(errors)
-    console.log(state)
+
 
 		this.setState((state) => ({ errors }));
 	};
