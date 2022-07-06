@@ -43,10 +43,18 @@ const Sidebar = () => {
 	}, [orderPop]);
 
 	const handleFilter = (e) => {
-		setQuery({
-			...query,
-			[e.target.name]: e.target.value === 'All' ? '' : e.target.value,
-		});
+		if (e.target.name === 'category') {
+			setQuery({
+				...query,
+				[e.target.name]: e.target.value === 'All' ? '' : e.target.value,
+				subcategory: '',
+			});
+		} else {
+			setQuery({
+				...query,
+				[e.target.name]: e.target.value === 'All' ? '' : e.target.value,
+			});
+		}
 	};
 	const handlerOrder = (e) => {
 		if (e.target.name === 'pop') {
@@ -55,7 +63,7 @@ const Sidebar = () => {
 			setOrderName(e.target.value);
 		}
 	};
-
+	console.log(query);
 	return (
 		<Container>
 			<Searchbar

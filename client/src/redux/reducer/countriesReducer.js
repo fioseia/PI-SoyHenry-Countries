@@ -4,6 +4,7 @@ import {
 	SET_ORDER_POP,
 	SET_ORDER_NAME,
 	GET_COUNTRY_DETAILS,
+	RESET_COUNTRY_DETAIL,
 } from '../actions/actions';
 
 let initialState = {
@@ -45,6 +46,12 @@ const countriesReducer = (state = initialState, action) => {
 				countries: [...state.countries],
 			};
 		case GET_COUNTRY_DETAILS:
+			return {
+				...state,
+				country: action.payload,
+			};
+
+		case RESET_COUNTRY_DETAIL:
 			return {
 				...state,
 				country: action.payload,

@@ -7,6 +7,7 @@ export const SET_ORDER_POP = 'SET_ORDER_POP';
 export const SET_ORDER_NAME = 'SET_ORDER_NAME';
 export const GET_COUNTRY_DETAILS = 'GET_COUNTRY_DETAILS';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
+export const RESET_COUNTRY_DETAIL = 'RESET_COUNTRY_DETAIL'
 
 export const getAllCountries = () => {
 	return function (dispatch) {
@@ -47,6 +48,12 @@ export const getCategories = () => {
 			.catch((error) => console.log(error));
 	};
 };
+
+export const resetCountryDetail =(dispatch) => {
+  return function (dispatch) {
+    dispatch({type: RESET_COUNTRY_DETAIL, payload:{}})
+  }
+}
 
 export const sortCountriesPop = (order) => {
 	return function (dispatch) {

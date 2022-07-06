@@ -5,7 +5,7 @@ import CardsContainer from './CardsContainer/CardsContainer';
 import Paged from './Paged/Paged';
 import Sidebar from './Sidebar/Sidebar';
 import { Container, Wrapper } from './HomeStyles';
-import { getAllCountries } from '../../redux/actions/actions';
+import { getAllCountries, resetCountryDetail } from '../../redux/actions/actions';
 import Loading from '../Loading/Loading';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
 	useEffect(() => {
 		dispatch(getAllCountries());
 		setTimeout(() => setLoading(false), 2000);
-
+    dispatch(resetCountryDetail())
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
