@@ -17,16 +17,19 @@ export const Button = styled.button`
 	background-color: inherit;
 	color: #f1f1f1;
 	padding: 5px 20px;
-	border: 1px solid #f1f1f1;
+	border: 2px solid #0099dd;
 	border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
 	cursor: pointer;
 `;
 
 export const Page = styled.span`
 	visibility: ${(props) => (props.active ? 'hidden' : 'visible')};
 	margin: 0 20px;
-	background-color: ${(props) => props.main && '#ccc'};
+	background-color: ${(props) => props.main && '#0099dd'};
   padding:5px 10px;
   border-radius: 40%;
+  font-weight: 600;
   cursor: pointer;
 `;

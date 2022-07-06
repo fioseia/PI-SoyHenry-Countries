@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getCountryDetails } from '../../redux/actions/actions';
 import Navbar from '../Navbar/Navbar';
 import {
@@ -9,6 +9,7 @@ import {
 	ActivityCardIcon,
 	ActivityCardInfo,
 	ActivityCardInfoItem,
+	Button,
 	Container,
 	Flag,
 	Info,
@@ -25,6 +26,7 @@ const CountryDetail = () => {
 
 	useEffect(() => {
 		dispatch(getCountryDetails(id));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
 	const numberWithCommas = (x) => {
@@ -35,7 +37,7 @@ const CountryDetail = () => {
 
 	return (
 		<Maincontainer>
-			<Navbar button='home' />
+			<Navbar />
 			<Container>
 				<Wrapper>
 					<Flag src={country.image} />
@@ -97,7 +99,7 @@ const CountryDetail = () => {
 						) : (
 							<>
 								<h2>Do you want to add an activity?</h2>
-								<Link to='/activities'>Create activity</Link>
+								<Button to='/activities'>Create activity</Button>
 							</>
 						)}
 					</ActivitiesContainer>

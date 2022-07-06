@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Landing from './components/Landing/Landing';
 
+
 function App() {
 	return (
 		<Router>

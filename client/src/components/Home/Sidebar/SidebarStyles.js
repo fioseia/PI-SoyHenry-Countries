@@ -1,112 +1,69 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	grid-column: 1/2;
-	grid-row: 1/7;
+	width: 15%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: center;
 	max-height: 100vh;
-	background-color: #090030;
+	padding: 0 10px;
+`;
 
-	@media (max-width: 390px) {
-		grid-column: 1/7;
-		grid-row: 2/3;
-		flex-direction: row;
+export const Filter = styled.div`
+	font-size: 18px;
+	font-weight: 500;
+	color: #f1f1f1;
+	text-align: center;
+	letter-spacing: 2px;
+  margin: 10px 0;
+`;
+
+export const Select = styled.select`
+	width: 100%;
+	height: 30px;
+  border-radius: 50px;
+	border: 2px solid #0099dd;
+	background-color: #010101;
+	color: #fff;
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 0 10px;
+	margin: 10px 0;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	&:focus {
+		outline: none;
+	}
+	&:hover {
+		background-color: #fff;
+		color: #090030;
 	}
 `;
 
-export const Categories = styled.fieldset`
-	display: ${(props) => (props.visibility ? 'none' : 'flex')};
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+export const Option = styled.option``;
 
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	border: none;
-`;
-export const Subcategories = styled.fieldset`
-	display: ${(props) => (props.visibility ? 'flex' : 'none')};
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	border: none;
-`;
-export const Legend = styled.legend`
-	text-align: center;
-`;
-export const Label = styled.label`
-	width: 90%;
-	margin: 10px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: space-evenly;
-	justify-content: center;
-	border-radius: 10px;
-	background-color: #0c3c78;
-	padding: 5px 10px;
-	letter-spacing: 2px;
-	cursor: pointer;
-`;
 export const Searchbar = styled.input`
-	background-color: #0c3c78;
-	border: none;
-	border-radius: 59px;
-	font-size: 16px;
-`;
-export const Radio = styled.input`
-	display: none;
-`;
-
-export const Wrapper = styled.div`
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	margin: 10px 0;
-`;
-
-export const Switch = styled.div`
-	/* position: relative;
-	display: inline-block;
-	width: 60px;
+	background: linear-gradient(
+		90deg,
+		rgba(161, 199, 224, 1) 0%,
+		rgba(0, 153, 221, 1) 100%
+	);
 	height: 30px;
-	margin: 0 10px; */
-`;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 50px;
+	text-align: center;
+	color: #f1f1f1;
+  margin-bottom: 10px;
 
-export const Slider = styled.span`
-	/* position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: #ccc;
-	transition: 0.4s;
-	border-radius: 34px;
+	&:focus {
+		outline: none;
+	}
 
-	&:before {
-		position: absolute;
-		content: '';
-		height: 25px;
-		width: 25px;
-		left: 3px;
-		bottom: 3px;
-		background-color: white;
-		transition: 0.4s;
-		border-radius: 50px;
-	} */
-`;
-
-export const Checkbox = styled.input`
-	/* display: none;
-	// si checked es true el background color es #0c3c78
-	&:checked + ${Slider} {
-		background-color: #f9c0c0;
-	} */
+	&::placeholder {
+		color: #f1f1f1;
+	}
 `;

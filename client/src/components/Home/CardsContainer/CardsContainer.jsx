@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../Card/Card';
 import { Container } from './CardsContainerStyles';
@@ -15,10 +15,10 @@ const CardsContainer = ({ countries }) => {
 
 	return (
 		<Container>
-			{countries &&
+			{countries.length ?
 				countries
 					.slice(startIndex, lastIndex)
-					.map((country) => <Card key={country.id} country={country} />)}
+					.map((country) => <Card key={country.id} country={country} />):<h2>Oh oh! Countries not found!</h2>}
 		</Container>
 	);
 };

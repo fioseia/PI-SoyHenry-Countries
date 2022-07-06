@@ -7,21 +7,25 @@ export const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background: #010101;
+	background: linear-gradient(
+		90deg,
+		rgba(161, 199, 224, 1) 0%,
+		rgba(0, 153, 221, 1) 100%
+	);
 `;
 
 export const Form = styled.form`
 	width: 50%;
 	min-height: 70%;
-	background-color: #f1f1f1;
+	border: 3px solid #5fc7ff;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 	padding: 20px;
 	border-radius: 30px;
-	box-shadow: 0 35px 68px 0 rgba(136, 174, 222, 0.42),
-		inset 0 -8px 16px 0 #b9d1f1;
+	background-color: #010101;
+  margin:30px 0;
 `;
 
 export const Label = styled.label`
@@ -29,29 +33,41 @@ export const Label = styled.label`
 	display: flex;
 	flex-direction: column;
 	font-weight: 600;
-	color: #43a8ff;
 `;
 
 export const Input = styled.input`
 	margin: 5px 0;
 	outline: none;
-	border: 1px solid #43a8ff;
+	border: 2px solid #f1f1f1;
 	border-radius: 5px;
 	padding: 5px;
-  color: #43a8ff;
-  
+	color: #f1f1f1;
+	background: transparent;
+
+	&:focus {
+		border: 2px solid #43a8ff;
+	}
+	&::placeholder {
+		color: #ccc;
+	}
 `;
 
 export const Select = styled.select`
 	margin: 5px 0;
 	outline: none;
-	border: 1px solid #43a8ff;
+	border: 2px solid #f1f1f1;
 	border-radius: 5px;
 	padding: 5px;
-  color:#43a8ff;
+	color: #f1f1f1;
+	background: transparent;
+	&:focus {
+		border: 2px solid #43a8ff;
+	}
 `;
 
-export const Option = styled.option``;
+export const Option = styled.option`
+	color: #010101;
+`;
 
 export const Error = styled.span`
 	color: red;
@@ -59,7 +75,6 @@ export const Error = styled.span`
 
 export const Wrapper = styled.div`
 	width: 100px;
-	background: cyan;
 	padding: 5px 10px;
 	margin: 5px;
 	display: flex;
@@ -67,6 +82,7 @@ export const Wrapper = styled.div`
 	align-items: baseline;
 	border-radius: 15px;
 	font-weight: 600;
+	border: 2px solid #5fc7ff;
 `;
 
 export const Country = styled.span``;
@@ -87,11 +103,14 @@ export const Submit = styled.input`
 	border-radius: 8px;
 	border: none;
 	padding: 12px 30px;
-	font-size: 16px;
+	font-size: 18px;
 	background-size: 200% 100%;
 	background-position: 100% 100%;
 	transition: background-position 256ms;
 	will-change: background-position;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+  font-weight: 600;
 	cursor: pointer;
 	&:hover {
 		background-position: 00% 200%;

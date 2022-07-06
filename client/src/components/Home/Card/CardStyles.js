@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 export const CardLink = styled(Link)`
-text-decoration: none;
-color: #f1f1f1;
-`
+	text-decoration: none;
+	color: #f1f1f1;
+`;
 
 export const Wrapper = styled.div`
 	transform: translate3d(0rem, 2rem, 3rem);
@@ -22,19 +21,18 @@ export const Name = styled.h2`
 	letter-spacing: 0.2rem;
 	text-transform: uppercase;
 	font-size: 1.5rem;
-  //background-color: yellow;
-  margin-bottom: 0;
+	margin-bottom: 0;
 `;
 export const Continent = styled.p`
 	font-weight: 500;
 	letter-spacing: 0.2rem;
 	text-transform: uppercase;
 	font-size: 1rem;
-  `;
+`;
 
 export const Container = styled.div.attrs((props) => ({
-  style: {
-    backgroundImage: `url(${props.image})`,
+	style: {
+		backgroundImage: `url(${props.image})`,
 	},
 }))`
 	position: relative;
@@ -46,11 +44,10 @@ export const Container = styled.div.attrs((props) => ({
 	display: flex;
 	align-items: flex-end;
 	perspective: 1000;
-  opacity: .8;
-
+	opacity: 0.8;
 	cursor: pointer;
 
-  &:hover{
-    opacity: 1;
-  }
+	&:hover {
+		opacity: 1;
+	}
 `;

@@ -24,7 +24,7 @@ const paginationReducer = (state = initialState, action) => {
 		case 'LAST_PAGE':
 			return {
 				...state,
-				current: state.totalPages + 1,
+				current: state.totalPages,
 			};
 		case 'SET_TOTAL_PAGES':
 			return {

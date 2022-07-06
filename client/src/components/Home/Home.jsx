@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import CardsContainer from './CardsContainer/CardsContainer';
 import Paged from './Paged/Paged';
 import Sidebar from './Sidebar/Sidebar';
-import { Container } from './HomeStyles';
+import { Container, Wrapper } from './HomeStyles';
 import { getAllCountries } from '../../redux/actions/actions';
 
 const Home = () => {
@@ -13,20 +13,24 @@ const Home = () => {
 
 	useEffect(() => {
 		dispatch(getAllCountries());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(
 		() => dispatch({ type: 'SET_TOTAL_PAGES', payload: countries.length }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 		[countries]
 	);
 
 	return (
 		<>
-			<Navbar button='create'/>
+			<Navbar button='create' />
 			<Container>
-				<Paged />
 				<Sidebar />
-				<CardsContainer countries={countries} />
+				<Wrapper>
+					<Paged />
+					<CardsContainer countries={countries} />
+				</Wrapper>
 			</Container>
 		</>
 	);
