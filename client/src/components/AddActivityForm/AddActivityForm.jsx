@@ -59,7 +59,6 @@ export class AddActivityForm extends Component {
 			subcategoryId,
 			countriesId,
 		} = state;
-    console.log(subcategoryId)
 		const errors = {};
 		if (!name) {
 			errors.name =
@@ -83,17 +82,13 @@ export class AddActivityForm extends Component {
 		if (countriesId.length < 1) {
 			errors.countriesId = 'At least one country must be selected';
 		}
-    console.log(errors)
-
-
 		this.setState((state) => ({ errors }));
 	};
 
 	handleChange = (e) => {
 		let value = e.target.value;
 		if (e.target.name === 'difficulty' || e.target.name === 'subcategoryId')
-    console.log(value)
-			//value = parseInt(value);
+			value = parseInt(value);
 		this.setState((state) => ({
 			data: { ...state.data, [e.target.name]: value },
 		}));
