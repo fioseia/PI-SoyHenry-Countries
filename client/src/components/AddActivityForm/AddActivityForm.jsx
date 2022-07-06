@@ -92,7 +92,8 @@ export class AddActivityForm extends Component {
 	handleChange = (e) => {
 		let value = e.target.value;
 		if (e.target.name === 'difficulty' || e.target.name === 'subcategoryId')
-			value = parseInt(value);
+    console.log(value)
+			//value = parseInt(value);
 		this.setState((state) => ({
 			data: { ...state.data, [e.target.name]: value },
 		}));
