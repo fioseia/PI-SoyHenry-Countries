@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { createNewActivity } = require('../controllers/controllers');
-const { Category, Subcategory } = require('../db');
+const { Category, Subcategory} = require('../db');
 
 const router = Router();
 
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 			include: [
 				{
 					model: Subcategory,
-					attributes: ['name','id'],
+					attributes: ['name', 'id'],
 				},
 			],
 		});
@@ -29,5 +29,7 @@ router.get('/', async (req, res) => {
 		res.status(400).json({ error: e.message });
 	}
 });
+
+
 
 module.exports = router;

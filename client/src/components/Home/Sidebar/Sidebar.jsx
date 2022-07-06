@@ -48,7 +48,6 @@ const Sidebar = () => {
 			[e.target.name]: e.target.value === 'All' ? '' : e.target.value,
 		});
 	};
-
 	const handlerOrder = (e) => {
 		if (e.target.name === 'pop') {
 			setOrderPop(e.target.value);

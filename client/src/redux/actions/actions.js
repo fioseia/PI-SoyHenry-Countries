@@ -92,4 +92,3 @@ export const addActivity = (data) => {
 		.then((response) => alert(JSON.stringify(response.data)))
 		.catch((error) => console.log(error));
 };
-

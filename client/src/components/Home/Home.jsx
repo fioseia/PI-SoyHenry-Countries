@@ -12,9 +12,11 @@ const Home = () => {
 	let dispatch = useDispatch();
 	let countries = useSelector((state) => state.countriesReducer.countries);
 	const [loading, setLoading] = useState(true);
+
 	useEffect(() => {
 		dispatch(getAllCountries());
 		setTimeout(() => setLoading(false), 2000);
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
